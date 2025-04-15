@@ -1,0 +1,65 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>c24e8795-a369-4777-8772-b52df6c399e6</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>4-Regression\LinearRegression.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>DataMining</Name>
+    <RootNamespace>DataMining</RootNamespace>
+    <InterpreterId>
+    </InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="1-Preprocessing\DataCleaning.py" />
+    <Compile Include="1-Preprocessing\DataNormalization.py" />
+    <Compile Include="1-Preprocessing\DataReduction.py" />
+    <Compile Include="2-Clustering\Kmeans.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="3-Classification\SVM.py" />
+    <Compile Include="3-Classification\KNN.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="4-Regression\LinearRegression.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Datasets\" />
+    <Folder Include="Pre_processamento\" />
+    <Folder Include="Analise\" />
+    <Folder Include="3-Classification\" />
+    <Folder Include="4-Regression\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="0-Datasets\BritishLibraryBooks.csv" />
+    <Content Include="0-Datasets\iris.csv" />
+    <Content Include="0-Datasets\Mamo.data" />
+    <Content Include="0-Datasets\Mamo.names" />
+    <Content Include="0-Datasets\MamoClear.data" />
+    <Content Include="0-Datasets\UniversityTowns.txt" />
+    <Content Include="0-Datasets\WinterOlympics.csv" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>
