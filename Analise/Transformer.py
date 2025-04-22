@@ -14,28 +14,22 @@ from sklearn.metrics import (
 )
 from itertools import cycle
 
-# Caminho da base de dados
 input_file = 'Datasets/GasesDissolvidos_Normalized.csv'
 names = ['H2','CH4','C2H2','C2H4','C2H6','defeito']
 features = ['H2','CH4','C2H2','C2H4','C2H6'] 
 target = 'defeito'
 
-# Carregando os dados
 df = pd.read_csv(input_file, names=names) 
 X = df[features].values
 y = df[target].values
 
-# Pré-processamento
 label_encoder = LabelEncoder()
 y = label_encoder.fit_transform(y)
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# Divisão treino/teste
-X_train, X_test, y_train, y_test = train_test_split(
-    X_scaled, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
-# Conversão para tensores
 X_train_tensor = torch.tensor(X_train, dtype=torch.float32)
 X_test_tensor = torch.tensor(X_test, dtype=torch.float32)
 y_train_tensor = torch.tensor(y_train, dtype=torch.long)
@@ -46,7 +40,6 @@ test_data = torch.utils.data.TensorDataset(X_test_tensor, y_test_tensor)
 train_loader = torch.utils.data.DataLoader(train_data, batch_size=32, shuffle=True)
 test_loader = torch.utils.data.DataLoader(test_data, batch_size=32, shuffle=False)
 
-# Definindo o modelo com atenção
 class AttentionClassifier(nn.Module):
     def __init__(self, input_size, hidden_size, num_classes):
         super(AttentionClassifier, self).__init__()
@@ -69,7 +62,6 @@ model = AttentionClassifier(input_size=input_size, hidden_size=hidden_size, num_
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
-# Treinamento
 num_epochs = 50
 train_losses, test_losses = [], []
 train_accuracies, test_accuracies = [], []
@@ -130,21 +122,17 @@ plt.legend()
 plt.title("Acurácia durante o Treinamento")
 plt.show()
 
-# Avaliação Final
 model.eval()
 with torch.no_grad():
     y_pred_probs = model(X_test_tensor).detach().cpu().numpy()
     y_pred_labels = np.argmax(y_pred_probs, axis=1)
 
-# Relatório de Classificação
 print("\nRelatório de Classificação:")
 print(classification_report(y_test, y_pred_labels, target_names=[str(cls) for cls in label_encoder.classes_]))
 
-# Log Loss e Kappa
 print(f"Log Loss: {log_loss(y_test, y_pred_probs):.4f}")
 print(f"Cohen's Kappa: {cohen_kappa_score(y_test, y_pred_labels):.4f}")
 
-# Matriz de Confusão
 cm = confusion_matrix(y_test, y_pred_labels)
 plt.figure(figsize=(8, 6))
 sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
@@ -155,7 +143,6 @@ plt.ylabel("Real")
 plt.tight_layout()
 plt.show()
 
-# Curvas ROC/AUC
 y_test_bin = label_binarize(y_test, classes=np.unique(y))
 fpr = dict()
 tpr = dict()
