@@ -1,15 +1,15 @@
-import itertools
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler, LabelEncoder, label_binarize
+import itertools
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.preprocessing import StandardScaler, LabelEncoder, MinMaxScaler, label_binarize
 from sklearn.metrics import (
     accuracy_score, f1_score, confusion_matrix,
     classification_report, log_loss, cohen_kappa_score,
     roc_curve, auc
 )
-from sklearn.svm import SVC
+from sklearn.neural_network import MLPClassifier
 from itertools import cycle
 
 def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', cmap=plt.cm.Blues):
@@ -40,49 +40,43 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
 
-def load_dataset(file_path):        
-    names = ['H2','CH4','C2H2','C2H4','C2H6', 'defeito'] 
-    features = ['H2','CH4','C2H2','C2H4','C2H6'] 
-    target = 'defeito'
-    df = pd.read_csv(file_path, names=names)
-    print(df.head())
-    return df, features, target
-
 def main():
-    # Load dataset
     input_file = 'Datasets/GasesDissolvidos_Normalized.csv'
-    df, features, target = load_dataset(input_file)
+    names = ['H2', 'CH4', 'C2H2', 'C2H4', 'C2H6', 'defeito']
+    features = ['H2', 'CH4', 'C2H2', 'C2H4', 'C2H6']
+    target = 'defeito'
 
-    # Separate X and y data
-    X = df[features]
-    y = df[target]
+    df = pd.read_csv(input_file, names=names)
+
+    X = df[features].values
+    y = df[target].values
     print("Total samples: {}".format(X.shape[0]))
 
-    # Encode labels if necessary
     label_encoder = LabelEncoder()
-    y_encoded = label_encoder.fit_transform(y)
+    y = label_encoder.fit_transform(y)
     class_names = label_encoder.classes_
 
-    # Split the data
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y_encoded, test_size=0.25, random_state=1)
-    
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=1)
     print("Total train samples: {}".format(X_train.shape[0]))
     print("Total test  samples: {}".format(X_test.shape[0]))
 
-    # Scale the data
-    scaler = StandardScaler()
+    scaler = MinMaxScaler()
     X_train = scaler.fit_transform(X_train)
     X_test = scaler.transform(X_test)
 
-    # SVM classifier
-    svm = SVC(kernel='poly', probability=True)
-    svm.fit(X_train, y_train)
+    tamanho_camadas = [64, 32]
+    mlp = MLPClassifier(hidden_layer_sizes=tamanho_camadas, max_iter=1000,
+                        random_state=1, activation='relu', alpha=0.01)
+    mlp.fit(X_train, y_train)
 
-    print("Qtd Support vectors:", svm.n_support_)
+    # Validação Cruzada
+    cv_scores = cross_val_score(mlp, X, y, cv=5)
+    print("Cross-validation scores:", cv_scores)
+    print("Mean cross-validation score: {:.2f}%".format(cv_scores.mean() * 100))
+    print("Standard deviation of cross-validation scores: {:.2f}".format(cv_scores.std()))
 
-    y_hat_test = svm.predict(X_test)
-    y_hat_test_proba = svm.predict_proba(X_test)
+    y_hat_test = mlp.predict(X_test)
+    y_hat_test_proba = mlp.predict_proba(X_test)
 
     # Métricas
     accuracy = accuracy_score(y_test, y_hat_test) * 100
@@ -90,21 +84,21 @@ def main():
     kappa = cohen_kappa_score(y_test, y_hat_test)
     loss = log_loss(y_test, y_hat_test_proba)
 
-    print(f"\nAccuracy: {accuracy:.2f}%")
-    print(f"F1 Score (macro): {f1:.4f}")
-    print(f"Cohen’s Kappa: {kappa:.4f}")
-    print(f"Log Loss: {loss:.4f}")
+    print("\nAccuracy: {:.2f}%".format(accuracy))
+    print("F1 Score (macro): {:.4f}".format(f1))
+    print("Cohen’s Kappa: {:.4f}".format(kappa))
+    print("Log Loss: {:.4f}".format(loss))
 
     print("\nRelatório de Classificação:")
     print(classification_report(y_test, y_hat_test, target_names=[str(cls) for cls in label_encoder.classes_]))
 
     # Matriz de Confusão
     cm = confusion_matrix(y_test, y_hat_test)
-    plot_confusion_matrix(cm, classes=class_names, normalize=False, title="Matriz de Confusão - SVM")
-    plot_confusion_matrix(cm, classes=class_names, normalize=True, title="Matriz de Confusão Normalizada - SVM")
+    plot_confusion_matrix(cm, class_names, normalize=False, title="Matriz de Confusão - MLP")
+    plot_confusion_matrix(cm, class_names, normalize=True, title="Matriz de Confusão Normalizada - MLP")
 
-    # Curvas ROC
-    y_test_bin = label_binarize(y_test, classes=np.unique(y_test))
+    # ROC/AUC Multiclasse
+    y_test_bin = label_binarize(y_test, classes=np.unique(y))
     n_classes = y_test_bin.shape[1]
 
     fpr = dict()
@@ -127,7 +121,7 @@ def main():
     plt.ylim([0.0, 1.05])
     plt.xlabel("Taxa de Falsos Positivos")
     plt.ylabel("Taxa de Verdadeiros Positivos")
-    plt.title("Curvas ROC - Classificação Multiclasse - SVM")
+    plt.title("Curvas ROC - MLPClassifier")
     plt.legend(loc="lower right")
     plt.grid(True)
     plt.tight_layout()
