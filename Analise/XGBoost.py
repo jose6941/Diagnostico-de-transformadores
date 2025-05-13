@@ -1,3 +1,4 @@
+import joblib
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -16,7 +17,7 @@ from sklearn.metrics import (
 )
 from itertools import cycle
 
-input_file = 'Dataset_sintetico/dados_sinteticos_normalized.csv'
+input_file = 'Gases_Dissolvidos/Dataset_sintetico/dados_sinteticos_normalized.csv'
 names = ['H2', 'CH4', 'C2H2', 'C2H4', 'C2H6', 'defeito']
 features = ['H2', 'CH4', 'C2H2', 'C2H4', 'C2H6']
 target = 'defeito'
@@ -104,3 +105,7 @@ plt.legend(loc="lower right")
 plt.grid(True)
 plt.tight_layout()
 plt.show()
+
+joblib.dump(model, 'modelo_xgboost.joblib')
+joblib.dump(scaler, 'scaler.joblib')
+joblib.dump(label_encoder, 'label_encoder.joblib')
