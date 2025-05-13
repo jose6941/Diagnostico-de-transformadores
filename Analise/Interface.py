@@ -2,64 +2,51 @@ import streamlit as st
 import numpy as np
 import joblib
 
-st.set_page_config(
-    page_title="Diagnóstico de Transformadores",
-    layout="centered"
-)
+st.set_page_config(page_title="Diagnóstico de Transformadores", layout="centered")
 
 model = joblib.load("joblib/modelo_xgboost.joblib")
 scaler = joblib.load("joblib/scaler.joblib")
-label_encoder = joblib.load("joblib/label_encoder.joblib")
 
 st.markdown("""
     <style>
-        .title {
-            text-align: center;
-            font-size: 30px;
-            font-weight: bold;
-            color: #004466;
+        .form-card {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            max-width: 650px;
+            margin: auto;
         }
-        .subtitle {
-            text-align: center;
+
+        .form-title {
+            font-size: 22px;
             font-weight: bold;
-        }
-        .info {
+            margin-bottom: 20px;
+            color: white;
+            margin: 10px;
             text-align: center;
-            font-size: 30px;
-            font-weight: bold;
-            margin-top: 30px;
-            margin-bottom: 30px;
         }
+
         .footer {
-            font-size: 14px;
+            font-size: 13px;
             text-align: center;
             color: gray;
-            margin-top: 20px;
+            margin-top: 50px;
         }
-        .stButton>button {
-            display: flex;
-            justify-content: center;
+
+        .stButton > button {
             background-color: #004466;
             color: white;
             border-radius: 8px;
-            padding: 0.5em 1em;
+            padding: 0.6em 1.5em;
+            font-size: 16px;
+            margin-top: 20px;
         }
     </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<div class='title'>Diagnóstico de Falhas em Transformadores</div>", unsafe_allow_html=True)
-st.markdown("<div class='subtitle'>Baseado em Análise DGA com XGBoost</div>", unsafe_allow_html=True)
-
-st.markdown("<div class='info'>Informe as concentrações dos gases em ppm</div>",unsafe_allow_html=True)
-
-gases = ['H2', 'CH4', 'C2H2', 'C2H4', 'C2H6']
-valores = []
-
-col1, col2 = st.columns(2)
-for i, gas in enumerate(gases):
-    with (col1 if i < 3 else col2):
-        val = st.number_input(f"{gas}", min_value=0.0, step=0.1)
-        valores.append(val)
+st.markdown("<h1 style='text-align:center;'>Diagnóstico de Transformadores</h1>", unsafe_allow_html=True)
+st.markdown("<div style='text-align:center;'>Análise de Gases Dissolvidos no Óleo (DGA) com XGBoost</div>", unsafe_allow_html=True)
 
 mapa_defeitos = {
     0: "Sem falha",
@@ -70,24 +57,36 @@ mapa_defeitos = {
 }
 
 explicacoes = {
-        "Arco": "Descarga de alta energia no óleo isolante.",
-        "Falaha térmica": "Sobreaquecimento detectado no enrolamento ou no isolamento.",
-        "Descarga parcial": "Fenômeno elétrico que pode indicar degradação do isolamento.",
-        "Celulose": "Degradação térmica dos componentes sólidos (papel isolante).",
-        "Sem falha": "Transformador em condição de operação normal."
+    "Arco elétrico": "Descarga de alta energia no óleo isolante.",
+    "Falha térmica": "Sobreaquecimento detectado no enrolamento ou no isolamento.",
+    "Descarga parcial": "Fenômeno elétrico que pode indicar degradação do isolamento.",
+    "Degradação da celulose": "Degradação térmica dos componentes sólidos (papel isolante).",
+    "Sem falha": "Transformador em condição de operação normal."
 }
 
-col1, col2, col3 = st.columns([1, 1, 1])
-with col2:
-    if st.button("Diagnosticar"):
-        entrada = np.array(valores).reshape(1, -1)
-        entrada_normalizada = scaler.transform(entrada)
-        pred = model.predict(entrada_normalizada)
+with st.form(key="form_diagnostico"):
+    st.markdown('<div class="form-title">Preencha os dados dos gases (em ppm)</div>', unsafe_allow_html=True)
 
-        classe_id = int(pred[0])
-        diagnostico = mapa_defeitos.get(classe_id, "Desconhecido")
+    gases = ['H2', 'CH4', 'C2H2', 'C2H4', 'C2H6']
+    valores = []
 
-        st.success(f"Tipo de falha diagnosticada: **{diagnostico}**")
-        st.info(explicacoes.get(diagnostico, "Sem descrição disponível."))
+    col1, col2 = st.columns(2)
+    for i, gas in enumerate(gases):
+        with (col1 if i < 3 else col2):
+            val = st.number_input(f"{gas}", min_value=0.0, step=0.1, key=f"{gas}_input")
+            valores.append(val)
+
+    submit = st.form_submit_button("Diagnosticar")
+
+if submit:
+    entrada = np.array(valores).reshape(1, -1)
+    entrada_normalizada = scaler.transform(entrada)
+    pred = model.predict(entrada_normalizada)
+
+    classe_id = int(pred[0])
+    diagnostico = mapa_defeitos.get(classe_id, "Desconhecido")
+
+    st.success(f"Tipo de falha diagnosticada: **{diagnostico}**")
+    st.info(explicacoes.get(diagnostico, "Sem descrição disponível."))
 
 
