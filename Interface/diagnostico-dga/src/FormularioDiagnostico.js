@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.css';
 
 const FormularioDiagnostico = () => {
   const [inputs, setInputs] = useState({ H2: '', CH4: '', C2H2: '', C2H4: '', C2H6: '' });
@@ -28,33 +29,101 @@ const FormularioDiagnostico = () => {
   return (
     <div style={styles.container}>
       
-      <form style={styles.formulario} onSubmit={diagnosticar}>
-        <h2 style={styles.titulo}>Diagnóstico DGA</h2>
-        {['H2', 'CH4', 'C2H2', 'C2H4', 'C2H6'].map(gas => (
-          <div key={gas} style={styles.campo}>
-            <label style={styles.label}>{gas} (ppm):</label>
-            <div style={styles.divInput}>
+      <div style={styles.formDiv}>
+        <form style={styles.formulario} onSubmit={diagnosticar}>
+
+          <div style={styles.divTitulo}>
+            <h2 style={styles.titulo}>Diagnóstico de<br/> transformadores de<br/>  potência por DGA</h2>
+          </div>
+          
+          <div style={styles.conjunto}>
+            <div style={styles.campo}>
+              <label style={styles.label}>H2 (ppm):</label>
+              <div style={styles.divInput}>
+                <input
+                  type="number"
+                  name={'H2'}
+                  value={inputs['H2']}
+                  onChange={handleChange}
+                  required
+                  style={styles.input}
+                />
+              </div>
+            </div>
+
+            <div style={styles.campo}>
+              <label style={styles.label}>CH4 (ppm):</label>
+              <div style={styles.divInput}>
+                <input
+                  type="number"
+                  name={'CH4'}
+                  value={inputs['CH4']}
+                  onChange={handleChange}
+                  required
+                  style={styles.input}
+                />
+              </div>
+            </div>
+          </div>
+
+           
+          <div style={styles.conjunto}> 
+              <div style={styles.campo}>
+                <label style={styles.label}>C2H2 (ppm):</label>
+                <input
+                  type="number"
+                  name={'C2H2'}
+                  value={inputs['C2H2']}
+                  onChange={handleChange}
+                  required
+                  style={styles.input}
+                />
+              </div>
+          
+              <div style={styles.campo}>
+                <label style={styles.label}>C2H4 (ppm):</label>
+                <input
+                  type="number"
+                  name={'C2H4'}
+                  value={inputs['C2H4']}
+                  onChange={handleChange}
+                  required
+                  style={styles.input}
+                />
+              </div>
+          </div>
+          
+
+          <div style={styles.sozinho}>
+            <div style={styles.campo}>
+              <label style={styles.label}>C2H6 (ppm):</label>
               <input
                 type="number"
-                name={gas}
-                value={inputs[gas]}
+                name={'C2H6'}
+                value={inputs['C2H6']}
                 onChange={handleChange}
                 required
                 style={styles.input}
               />
             </div>
-            
           </div>
-        ))}
-        <button type="submit" style={styles.botao}>Diagnosticar</button>
-      </form>
 
-      {resultado && (
-        <div style={styles.resultado}>
-          <h4>Falha identificada:</h4>
-          <p><strong>{resultado.falha}</strong></p>
+          <div style={styles.divBotao}>
+              <button type="submit" style={styles.botao}>Confirmar</button>
+          </div>
+          
+        </form>
+      </div>
+      
+      <div style={styles.formDiv}>
+        {resultado && (
+        <div style={styles.formulario}>
+          <h4 style={styles.titulo}>Falha identificada:</h4>
+          <p style={styles.titulo}><strong>{resultado.falha}</strong></p>
         </div>
-      )}
+        )}
+      </div>
+      
     </div>
   );
 };
@@ -62,70 +131,93 @@ const FormularioDiagnostico = () => {
 const styles = {
   container: {
     width: '100vw',
-    heigh: '100vh',
-    padding: '3rem',
+    height: '100vh',
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    boxSizing: 'borderBox',
+    backgroundColor: '#151320',
   },
   titulo: {
+    font: 'bold',
     textAlign: 'center',
-    color: 'black',
-    fontSize: 30,
-    marginBottom: '2rem'
+    color: '#151320',
+    fontSize: 28,
+  },
+  divTitulo: {
+    borderBottom: '1px solid #151320',
+    marginBottom: '2rem',
+    marginTop: '1.5rem'
+  },
+  formDiv: {
+    marginTop: '20px',
+    backgroundImage: 'linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100%)',
+    padding: '5px',
+    borderRadius: '15px',
   },
   formulario: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-    padding: '10px 40px',
+    fontFamily: 'Monospace',
     backgroundColor: 'white',
-    borderRadius: '8px',
-    boxShadow: '2px 2px 8px black'
+    paddingTop: '10px',
+    paddingLeft: '40px',
+    paddingRight: '40px',
+    borderRadius: '15px',
+    alignItems: 'center'
+  },
+  conjunto: {
+    display: 'flex',
+    flex: 'row',
+  },
+  sozinho: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   campo: {
-    marginBottom: '1.2rem'
+    margin: '0 auto',
+    borderRadius: '5px',
+    marginBottom: '15px',
+    borderBottom: '1px solid #151320'
   },
   label: {
-    marginBottom: '3px',
     display: 'block',
-    color: '#333',
+    color: '#151320',
+    fontSize: '15px',
     fontWeight: 'bold'
   },
   input: {
-    width: '220px',
-    borderRadius: '3px',
-    paddingBottom: '6px',
+    width: '110px',
+    height: '15px',
+    borderRadius: '10px',
+    padding: '6px',
     border: 'none',
-    borderBottom: '1px solid #ccc',
     fontSize: '15px',
-    alignItems: 'center',
     outline: 'none'
   },
-  divInput: {
-    width: '220px',
-    border: 'none',
-    borderBottom: '1px solid #ccc',
+  divBotao: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   botao: {
-    backgroundColor: '#0077aa',
-    width: 200,
+    backgroundColor: '#151320',
+    width: '300px',
+    height: '50px',
     color: '#fff',
-    paddingTop: '15px',
-    paddingBottom: '15px',
     border: 'none',
-    borderRadius: '5px',
-    fontSize: '1rem',
+    borderRadius: '6px',
+    fontSize: '20px',
     cursor: 'pointer',
-    marginTop: '10px',
-    marginBottom: '10px'
+    marginTop: '25px',
+    marginBottom: '10px',
   },
   resultado: {
+    display: 'flex',
     marginTop: '2rem',
     background: '#e6f7ff',
     padding: '1.2rem',
-    borderLeft: '6px solid #00aaff',
+    borderLeft: '6px solid #151320',
     borderRadius: '10px'
   }
 };
