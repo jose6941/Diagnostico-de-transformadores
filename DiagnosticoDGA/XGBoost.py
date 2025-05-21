@@ -17,7 +17,7 @@ from sklearn.metrics import (
 )
 from itertools import cycle
 
-input_file = 'Gases_Dissolvidos/Dataset_sintetico/dados_sinteticos_normalized.csv'
+input_file = 'Datasets/GasesDissolvidos_Normalized.csv'
 names = ['H2', 'CH4', 'C2H2', 'C2H4', 'C2H6', 'defeito']
 features = ['H2', 'CH4', 'C2H2', 'C2H4', 'C2H6']
 target = 'defeito'

@@ -1,4 +1,4 @@
-import FormularioDiagnostico from './FormularioDiagnostico.js';
+import FormularioDiagnostico from './FormularioDiagnostico.jsX';
 
 function App() {
   return (

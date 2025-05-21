@@ -15,8 +15,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-model = joblib.load("joblib/modelo_xgboost.joblib")
-scaler = joblib.load("joblib/scaler.joblib")
+model = joblib.load("./modelo_xgboost.joblib")
+scaler = joblib.load("./scaler.joblib")
 
 class InputData(BaseModel):
     H2: float
