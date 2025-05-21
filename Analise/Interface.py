@@ -35,6 +35,7 @@ st.markdown("""
         }
 
         .stButton > button {
+            display: flex;
             background-color: #004466;
             color: white;
             border-radius: 8px;
@@ -46,7 +47,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("<h1 style='text-align:center;'>Diagnóstico de Transformadores</h1>", unsafe_allow_html=True)
-st.markdown("<div style='text-align:center;'>Análise de Gases Dissolvidos no Óleo (DGA) com XGBoost</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align:center;font-weight: bold;;margin: 10px;margin-bottom: 20px;'>Análise de DGA com XGBoost</div>", unsafe_allow_html=True)
 
 mapa_defeitos = {
     0: "Sem falha",
