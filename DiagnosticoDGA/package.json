@@ -12,9 +12,12 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.7",
+    "apexcharts": "^4.7.0",
     "flowbite-react": "^0.11.7",
+    "lucide-react": "^0.511.0",
     "motion": "^12.12.2",
     "react": "^19.1.0",
+    "react-apexcharts": "^1.7.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.0",
     "tailwindcss": "^4.1.7"
