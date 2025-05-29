@@ -1,8 +1,8 @@
-import LandigPage from './LandingPage';
+import LandingPage from './LandingPage';
 
 function App() {
   return (
-      <LandigPage />
+      <LandingPage />
   );
 }
 
