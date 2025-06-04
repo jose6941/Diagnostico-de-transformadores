@@ -69,61 +69,6 @@ const Features = () => {
             </p>
           </div>
         </div>
-
-        <div className="divCollumn">
-          <h2 className="h2 features__heading">
-            <br/>
-            <br/>
-            Análise dos tipos de {" "}
-            <span className="h2 features__text-gradient">Falhas</span>
-          </h2>
-        </div>  
-            
-        <div className="features__feature-container2">
-          <div className="feature">
-            <h2 className="h3 features__heading">Descarga Parcial</h2>
-            <p className="text-reg features__subheading">
-              A descarga parcial é uma falha de baixa energia que ocorre em áreas isolantes com imperfeições, gerando principalmente hidrogênio. É considerada de risco baixo a moderado, pois indica o início de um processo de degradação.
-            </p>
-          </div>
-          <div className="feature">
-            <h2 className="h3 features__heading">Superaquecimento do óleo</h2>
-            <p className="text-reg features__subheading">
-              O superaquecimento do óleo, quando leve ou moderado, ocorre em temperaturas entre 150 e 300 °C e gera metano e etano. Essa condição sugere pontos quentes no sistema e representa um risco moderado.
-            </p>
-          </div>
-        </div>
-
-        <div className="features__feature-container2">
-          <div className="feature">
-            <h2 className="h3 features__heading">Superaquecimento do papel isolante</h2>
-            <p className="text-reg features__subheading">
-              A degradação do papel isolante, por sua vez, ocorre a partir de 150 °C e libera grandes quantidades de monóxido e dióxido de carbono. Esse tipo de falha está relacionado ao envelhecimento do isolamento sólido, representando um risco elevado e muitas vezes irreversível. 
-            </p>
-          </div>
-          <div className="feature">
-            <h2 className="h3 features__heading">Superaquecimento severo do óleo</h2>
-            <p className="text-reg features__subheading">
-              O superaquecimento severo do óleo ocorre quando a temperatura no interior do transformador ultrapassa os 300 °C, geralmente devido a falhas em conexões, sobrecarga ou problemas de ventilação. Nessa condição, o óleo isolante se decompõe termicamente, liberando grandes quantidades de etileno, além de metano e etano em menores proporções.
-            </p>
-          </div>
-        </div>
-
-        <div className="features__feature-container2">
-          <div className="feature">
-            <h2 className="h3 features__heading">Arco Elétrico</h2>
-            <p className="text-reg features__subheading">
-              O arco elétrico é uma falha muito mais grave, causada por descargas elétricas intensas no interior do equipamento, como curtos-circuitos ou contatos soltos. Ele ocorre em temperaturas superiores a 700 °C e leva à decomposição explosiva do óleo e, muitas vezes, também do papel isolante.
-            </p>
-          </div>
-          <div className="feature">
-            <h2 className="h3 features__heading">Descarga de baixa energia</h2>
-            <p className="text-reg features__subheading">
-              A descarga de baixa energia, como faíscas ou efeito corona, ocorre entre 400 e 700 °C e também gera hidrogênio, além de pequenas quantidades de acetileno. Embora não tão crítica quanto o arco, essa condição exige atenção, pois pode evoluir rapidamente.
-            </p>
-          </div>
-        </div>
-
     </section>
   );
 };
