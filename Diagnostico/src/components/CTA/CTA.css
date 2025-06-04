@@ -5,19 +5,21 @@
 
 .cta-content {
   margin: auto;
+  margin-bottom: 70px;
   max-width: 921px;
   display: flex;
   justify-content: space-between;
 }
 
 .cta-content__left {
-  max-width: 498px;
+  max-width: 400px;
+  margin-top: 20px;
 }
 
 .h3.cta__heading {
   color: #fff;
   margin-top: 42px;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 }
 
 .text-reg.cta__description {

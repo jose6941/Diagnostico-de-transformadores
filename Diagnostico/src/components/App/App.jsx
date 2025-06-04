@@ -1,6 +1,6 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "./App.css";
-import doubleQoute from "../../assets/double-quote.svg";
 import "../../fonts/fonts.css";
 import Page from "../Page/Page";
 import Header from "../Header/Header";
@@ -10,18 +10,29 @@ import Testimonial from "../Testimonial/Testimonial";
 import Features from "../Features/Features";
 import Navigation from "../Navigation/Navigation";
 import CTA from "../CTA/CTA";
+import FormularioDiagnostico from "../Formulario/FormularioDiagnostico";
 
 const App = () => {
   return (
-    <Page>
-      <Header>
-        <Navigation />
-        <Hero />
-      </Header>
-      <Logos />
-      <Features />
-      <CTA/>
-    </Page>
+    <Router>
+      <Page>
+        <Header>
+          <Navigation />
+        </Header>
+
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Hero />
+              <Logos />
+              <Features />
+              <CTA />
+            </>
+          } />
+          <Route path="/formulario" element={<FormularioDiagnostico />} />
+        </Routes>
+      </Page>
+    </Router>
   );
 };
 
