@@ -22,7 +22,7 @@
 .body {
   margin: 0px;
   padding: 0px;
-  background-color: var(--primary-400);
+  background-color: black;
 }
 
 .text-large {

@@ -9,6 +9,7 @@ import Logos from "../Logos/Logos";
 import Testimonial from "../Testimonial/Testimonial";
 import Features from "../Features/Features";
 import Navigation from "../Navigation/Navigation";
+import CTA from "../CTA/CTA";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       </Header>
       <Logos />
       <Features />
+      <CTA/>
     </Page>
   );
 };
