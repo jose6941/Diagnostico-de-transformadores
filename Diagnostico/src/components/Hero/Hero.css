@@ -82,3 +82,9 @@
   border-radius: 8px;
   margin-left: 8px;
 }
+
+.hero__graphic {
+  width: 460px;
+  height: 500px;
+  padding-top: 10px;
+}

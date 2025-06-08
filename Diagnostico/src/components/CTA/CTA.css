@@ -64,3 +64,8 @@
   position: absolute;
   top: -250px;
 }
+
+.cta__shapes {
+  width: 460px;
+  height: 400px;
+}
