@@ -2,6 +2,11 @@ import React from "react";
 import "./CTA.css";
 import ctaShapes from "../../assets/cta-shapes.png";
 import Descarga from "../../assets/Descarga.png";
+import Oleo from "../../assets/Oleo.png";
+import Papel from "../../assets/Papel.png";
+import Superaquecimento from "../../assets/Superaquecimento.png";
+import Arco from "../../assets/Arco.png";
+import Energia from "../../assets/Energia.png";
 import arrow from "../../assets/arrow.svg";
 import circleGradient from "../../assets/circle-gradient.png";
 
@@ -24,7 +29,7 @@ const CTA = () => {
 
       <div className="cta-content">
         <div className="cta-content__right">
-          <img className="cta__shapes" src={ctaShapes} alt="graphic shapes" />
+          <img className="cta__shapes" src={Oleo} alt="graphic shapes" />
         </div>
         <div className="cta-content__left">
           <h3 className="h3 cta__heading">
@@ -51,7 +56,7 @@ const CTA = () => {
           </p>
         </div>
         <div className="cta-content__right">
-          <img className="cta__shapes" src={ctaShapes} alt="graphic shapes" />
+          <img className="cta__shapes" src={Papel} alt="graphic shapes" />
         </div>
       </div>
       <img
@@ -62,7 +67,7 @@ const CTA = () => {
 
       <div className="cta-content">
         <div className="cta-content__right">
-          <img className="cta__shapes" src={ctaShapes} alt="graphic shapes" />
+          <img className="cta__shapes" src={Superaquecimento} alt="graphic shapes" />
         </div>
         <div className="cta-content__left">
           <h3 className="h3 cta__heading">
@@ -89,7 +94,7 @@ const CTA = () => {
           </p>
         </div>
         <div className="cta-content__right">
-          <img className="cta__shapes" src={ctaShapes} alt="graphic shapes" />
+          <img className="cta__shapes" src={Arco} alt="graphic shapes" />
         </div>
       </div>
       <img
@@ -100,7 +105,7 @@ const CTA = () => {
 
       <div className="cta-content">
         <div className="cta-content__right">
-          <img className="cta__shapes" src={ctaShapes} alt="graphic shapes" />
+          <img className="cta__shapes" src={Energia} alt="graphic shapes" />
         </div>
         <div className="cta-content__left">
           <h3 className="h3 cta__heading">
