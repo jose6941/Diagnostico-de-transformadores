@@ -11,6 +11,7 @@ import Features from "../Features/Features";
 import Navigation from "../Navigation/Navigation";
 import CTA from "../CTA/CTA";
 import FormularioDiagnostico from "../Formulario/FormularioDiagnostico";
+import Manutençao from "../Manutençao/Manutençao";
 
 const App = () => {
   return (
@@ -27,9 +28,12 @@ const App = () => {
               <Logos />
               <Features />
               <CTA />
+              <Manutençao />  
             </>
           } />
-          <Route path="/formulario" element={<FormularioDiagnostico />} />
+          <Route path="/formulario" element={
+            <FormularioDiagnostico />
+          } />
         </Routes>
       </Page>
     </Router>

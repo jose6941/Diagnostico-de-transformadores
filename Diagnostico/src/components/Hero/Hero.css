@@ -3,6 +3,8 @@
   justify-content: space-between;
   padding: 22px 188px 22px 152px;
   column-gap: 101px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .h1.hero__heading {

@@ -1,0 +1,15 @@
+.table {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    font-family: "DM Sans";
+    font-size: 42px;
+    src: url("./DMSans-SemiBold.ttf");
+    margin-bottom: 50px;
+    text-align: center;
+}

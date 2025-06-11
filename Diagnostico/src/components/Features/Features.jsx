@@ -9,9 +9,11 @@ const Features = () => {
         <h2 className="h2 features__heading">
           Sobre o {" "}
           <span className="h2 features__text-gradient">Projeto</span>
+          <br />
         </h2>
-        <div className="divRow">
-          <div>
+        
+        <div className="container3">
+          <div className="feature2">
             <h2 className="h2 features__heading">Análise</h2>
             <p className="text-reg features__subheading">
               A técnica mais difundida para o diagnóstico dessas falhas é a Análise de Gases Dissolvidos (DGA), 
@@ -20,7 +22,7 @@ const Features = () => {
               possíveis estados de falhas que possam estar ocorrendo.
             </p>
           </div>
-          <div>
+          <div className="feature2">
             <h2 className="h2 features__heading">Processo</h2>
             <p className="text-reg features__subheading">
               Esses processos de análise de gases dissolvidos 
@@ -30,8 +32,18 @@ const Features = () => {
               transformador.
             </p>
           </div>
+          <div className="feature2">
+            <h2 className="h2 features__heading">Resultados</h2>
+            <p className="text-reg features__subheading">
+              Os resultados obtidos demonstram que a aplicação de algoritmos de aprendizado
+              supervisionado, como o XGBoost, é uma abordagem promissora para alcançar o objetivo
+              proposto de desenvolver um sistema inteligente de diagnóstico automático de falhas
+              incipientes em transformadores de potência. Com elevadas métricas de desempenho, acurácia
+              geral de 0,91 e AUCs superiores a 0,95
+            </p>
+          </div>
+          <br />
         </div>
-        
         
         </div>
         <div className="divCollumn">

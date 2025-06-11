@@ -14,7 +14,7 @@ const Logos = () => {
         ))}
       </div>
       <div className="logos__overlay logos__overlay_left"></div>
-      <div className="logos__overlay logos__overlay_right"></div>
+      <div className="logos__overlay logos__overlay_right"></div>  
     </section>
   );
 };

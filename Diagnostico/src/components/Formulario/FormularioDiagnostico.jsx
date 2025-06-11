@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// Rode uvicorn main:app --reload
 
 const FormularioDiagnostico = () => {
   const [inputs, setInputs] = useState({ H2: '', CH4: '', C2H2: '', C2H4: '', C2H6: '' });
@@ -26,7 +27,7 @@ const FormularioDiagnostico = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <section style={styles.container}>
       <div style={styles.formDiv}>
         <form style={styles.formulario} onSubmit={diagnosticar}>
           <div style={styles.divTitulo}>
@@ -109,29 +110,29 @@ const FormularioDiagnostico = () => {
       
       {resultado && (
         <div style={styles.formDiv}>
-          <div style={styles.formulario}>
-            <h4 style={styles.titulo}>Falha identificada:</h4>
+          <div style={styles.formulario2}>
+            <h4 style={styles.titulo}>Falha identificada</h4>
             <p style={styles.titulo}><strong>{resultado.falha}</strong></p>
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 
 const styles = {
   container: {
-    width: '100vw',
-    height: '100vh',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'black',   
+    alignItems: 'center',
+    columnGap: '101px',
+    marginTop: '20px',
+    marginBottom: '20px',
   },
 
   formDiv: {
-    marginTop: '20px',
+    marginTop: '60px',
     background: 'linear-gradient(90deg, #0F2027 0%, #203A43 50%, #2C5364 100%)',
     padding: '3px',
     borderRadius: '12px',
@@ -151,6 +152,16 @@ const styles = {
     fontFamily: 'Courier New, monospace',
   },
 
+  formulario2: {
+    alignItems: 'center',
+    backgroundColor: '#161B22',
+    borderRadius: '12px',
+    paddingBottom: '20px',
+    display: 'flex',
+    flexDirection: 'column',
+    fontFamily: 'Courier New, monospace',
+  },
+
   divTitulo: {
     marginBottom: '10px',
     textAlign: 'center',
@@ -162,6 +173,7 @@ const styles = {
     fontSize: '30px',
     fontWeight: 'bold',
     lineHeight: '1.3',
+    marginBottom: '10px'
   },
 
   conjunto: {
