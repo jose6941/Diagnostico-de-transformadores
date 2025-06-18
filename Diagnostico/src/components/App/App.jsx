@@ -28,7 +28,7 @@ const App = () => {
               <Logos />
               <Features />
               <CTA />
-              <Manutençao />  
+              <Manutençao />
             </>
           } />
           <Route path="/formulario" element={

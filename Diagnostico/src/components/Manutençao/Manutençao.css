@@ -1,9 +1,12 @@
-.table {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.manutencao-container {
+  padding: 3rem 2rem;
+  background-color: #0a0a0a;
+  min-height: 100vh;
+  color: #f1f1f1;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h2 {
@@ -12,4 +15,50 @@ h2 {
     src: url("./DMSans-SemiBold.ttf");
     margin-bottom: 50px;
     text-align: center;
+    color: #ffffff;
+}
+
+.tabela-wrapper {
+  display: flex;
+  justify-content: center; 
+  width: 100%;             
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+
+
+.tabela {
+  width: 75%;                  
+  border-collapse: collapse;
+  border: 1px solid white;
+}
+
+.tabela th,
+.tabela td {
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid white;
+}
+
+.tabela th {
+  color: #00d8ff;
+  font-weight: bold;
+  font-size: 0.95rem;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tabela tbody tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.tabela td {
+  color: #f1f1f1;
+  font-size: 0.9rem;
+}
+
+.tabela td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: #ffffff;
 }
