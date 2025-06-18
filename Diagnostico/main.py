@@ -33,6 +33,14 @@ mapa_defeitos = {
     4: "Degradação da celulose"
 }
 
+mapa_medidas = {
+    0: "Monitoramento regular de DGA, bom isolamento, evitar umidade. Manutenção consiste no teste de rigidez dielétrica, análise de isolamento sólido",
+    1: "Descarga parcial",
+    2: "Falha térmica",
+    3: "Arco elétrico",
+    4: "Degradação da celulose"
+}
+
 @app.post("/diagnostico")
 def diagnosticar(data: InputData):
     entrada = np.array([[data.H2, data.CH4, data.C2H2, data.C2H4, data.C2H6]])
