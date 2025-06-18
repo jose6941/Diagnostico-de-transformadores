@@ -27,7 +27,6 @@ h2 {
 }
 
 
-
 .tabela {
   width: 75%;                  
   border-collapse: collapse;
@@ -42,7 +41,6 @@ h2 {
 }
 
 .tabela th {
-  color: #00d8ff;
   font-weight: bold;
   font-size: 0.95rem;
   background-color: rgba(255, 255, 255, 0.05);

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Manutencao.css';
+import './Manutençao.css';
 
 const Manutencao = () => {
   return (
