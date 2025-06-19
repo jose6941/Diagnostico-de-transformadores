@@ -113,9 +113,18 @@ const FormularioDiagnostico = () => {
           <div style={styles.formulario2}>
             <h4 style={styles.titulo}>Falha identificada</h4>
             <p style={styles.titulo}><strong>{resultado.falha}</strong></p>
+
+            <div style={styles.detalhesBox}>
+              <h5 style={styles.subtitulo}>Descrição</h5>
+              <p style={styles.texto}>{resultado.descricao}</p>
+
+              <h5 style={styles.subtitulo}>Medidas de Prevenção e Manutenção</h5>
+              <p style={styles.texto}>{resultado.medidas}</p>
+            </div>
           </div>
         </div>
       )}
+
     </section>
   );
 };
@@ -174,6 +183,28 @@ const styles = {
     fontWeight: 'bold',
     lineHeight: '1.3',
     marginBottom: '10px'
+  },
+
+  subtitulo: {
+    color: '#58A6FF',
+    fontSize: '18px',
+    marginTop: '15px',
+    marginBottom: '5px',
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+
+  texto: {
+    color: '#C9D1D9',
+    fontSize: '14px',
+    textAlign: 'justify',
+    lineHeight: '1.6',
+    padding: '0 10px',
+  },
+
+  detalhesBox: {
+    padding: '10px 5px',
+    width: '100%',
   },
 
   conjunto: {
