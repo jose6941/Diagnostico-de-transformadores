@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-// Rode uvicorn main:app --reload
+import { useNavigate } from 'react-router-dom'; 
+//Rode uvicorn main:app --reload
 
 const FormularioDiagnostico = () => {
+  const navigate = useNavigate(); 
   const [inputs, setInputs] = useState({ H2: '', CH4: '', C2H2: '', C2H4: '', C2H6: '' });
-  const [resultado, setResultado] = useState(null);
 
   const handleChange = e => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -23,7 +24,8 @@ const FormularioDiagnostico = () => {
       })
     });
     const data = await res.json();
-    setResultado(data);
+
+    navigate("/resultados", { state: data });
   };
 
   return (
@@ -32,7 +34,7 @@ const FormularioDiagnostico = () => {
         <form style={styles.formulario} onSubmit={diagnosticar}>
           <div style={styles.divTitulo}>
             <h2 style={styles.titulo}>
-              Diagnóstico de<br /> transformadores de<br /> potência por DGA
+              Diagnosticar
             </h2>
           </div>
 
@@ -107,23 +109,6 @@ const FormularioDiagnostico = () => {
           </div>
         </form>
       </div>
-      
-      {resultado && (
-        <div style={styles.formDiv}>
-          <div style={styles.formulario2}>
-            <h4 style={styles.titulo}>Falha identificada</h4>
-            <p style={styles.titulo}><strong>{resultado.falha}</strong></p>
-
-            <div style={styles.detalhesBox}>
-              <h5 style={styles.subtitulo}>Descrição</h5>
-              <p style={styles.texto}>{resultado.descricao}</p>
-
-              <h5 style={styles.subtitulo}>Medidas de Prevenção e Manutenção</h5>
-              <p style={styles.texto}>{resultado.medidas}</p>
-            </div>
-          </div>
-        </div>
-      )}
 
     </section>
   );
@@ -141,23 +126,22 @@ const styles = {
   },
 
   formDiv: {
-    marginTop: '60px',
-    background: 'linear-gradient(90deg, #0F2027 0%, #203A43 50%, #2C5364 100%)',
+    marginTop: '20px',
     padding: '3px',
     borderRadius: '12px',
     width: '100%',
-    maxWidth: '440px',
+    maxWidth: '450px',
     boxShadow: '0 4px 12px rgba(0,0,0,0.4)',
   },
 
   formulario: {
     alignItems: 'center',
     backgroundColor: '#161B22',
-    borderRadius: '12px',
-    padding: '20px',
+    borderRadius: '6px',
+    paddingBottom: '40px',
     display: 'flex',
     flexDirection: 'column',
-    gap: '15px',
+    gap: '12px',
     fontFamily: 'Courier New, monospace',
   },
 
@@ -172,17 +156,18 @@ const styles = {
   },
 
   divTitulo: {
-    marginBottom: '10px',
+    marginBottom: '30px',
+    marginTop: '10px',
     textAlign: 'center',
     borderBottom: '1px solid #30363D',
   },
 
   titulo: {
     color: '#C9D1D9',
-    fontSize: '30px',
+    fontSize: '45px',
     fontWeight: 'bold',
     lineHeight: '1.3',
-    marginBottom: '10px'
+    marginBottom: '20px',
   },
 
   subtitulo: {
@@ -227,16 +212,16 @@ const styles = {
     color: '#8B949E',
     marginBottom: '5px',
     paddingLeft: '5px',
-    fontSize: '14px',
+    fontSize: '15px',
     fontWeight: '500',
   },
 
   input: {
-    width: '150px',
+    width: '160px',
     backgroundColor: '#0D1117',
     color: '#C9D1D9',
     border: '1px solid #30363D',
-    borderRadius: '8px',
+    borderRadius: '5px',
     padding: '5px',
     paddingLeft: '10px',
     fontSize: '14px',
@@ -247,11 +232,11 @@ const styles = {
   },
 
   inputSolo: {
-    width: '325px',
+    width: '345px',
     backgroundColor: '#0D1117',
     color: '#C9D1D9',
     border: '1px solid #30363D',
-    borderRadius: '8px',
+    borderRadius: '5px',
     padding: '5px',
     paddingLeft: '10px',
     fontSize: '14px',
@@ -268,27 +253,16 @@ const styles = {
   },
 
   botao: {
-    width: '336px',
-    backgroundColor: '#238636',
+    width: '356px',
+    backgroundColor: '#30363D',
     color: '#ffffff',
-    padding: '12px 30px',
+    padding: '15px 40px',
     border: 'none',
     borderRadius: '5px',
     fontSize: '18px',
     fontWeight: 'bold',
     cursor: 'pointer',
     transition: 'background-color 0.3s ease',
-  },
-
-  resultado: {
-    marginTop: '30px',
-    backgroundColor: '#1F6FEB',
-    color: 'white',
-    borderRadius: '8px',
-    padding: '20px',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: '18px',
   },
 };
 
