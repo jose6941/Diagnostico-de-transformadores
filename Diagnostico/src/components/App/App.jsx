@@ -28,11 +28,13 @@ const App = () => {
               <Logos />
               <Features />
               <CTA />
-              <Manutençao />
             </>
           } />
           <Route path="/formulario" element={
             <FormularioDiagnostico />
+          } />
+          <Route path="/manutençao" element={
+            <Manutençao />
           } />
         </Routes>
       </Page>

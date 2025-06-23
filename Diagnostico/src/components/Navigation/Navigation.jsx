@@ -13,6 +13,9 @@ const Navigation = () => {
         <a href="/Formulario" className="text-reg navigation__link">
           Diagnostico
         </a>
+        <a href="/Manutençao" className="text-reg navigation__link">
+          Manutenção
+        </a>
       </ul>
     </nav>
   );
