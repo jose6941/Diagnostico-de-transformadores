@@ -14,7 +14,7 @@ const Navigation = () => {
           Diagnostico
         </a>
         <a href="/Manutençao" className="text-reg navigation__link">
-          Manutenção
+          Tabela
         </a>
       </ul>
     </nav>

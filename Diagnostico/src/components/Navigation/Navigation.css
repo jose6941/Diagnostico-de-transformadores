@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   box-sizing: border-box;
-  border-bottom: 1px solid rgba(4, 140, 129, 0.3);
+  border-bottom: 1px solid #333;
 }
 
 .navigation__logo-section {

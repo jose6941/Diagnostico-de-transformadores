@@ -14,80 +14,74 @@ const Manutencao = () => {
               <th>Tipo de Falha</th>
               <th>H₂</th>
               <th>CH₄</th>
-              <th>C₂H₆</th>
-              <th>C₂H₄</th>
               <th>C₂H₂</th>
-              <th>CO</th>
-              <th>CO₂</th>
-              <th>Observação</th>
+              <th>C₂H₄</th>
+              <th>C₂H₆</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <td>Sem fallha</td>
+              <td>13 - 19</td>
+              <td>1 - 3</td>
+              <td>1 - 1</td>
+              <td>1 - 21</td>
+              <td>0 - 6</td>
+            </tr>
+            <tr>
               <td>Descarga Parcial</td>
-              <td>&gt; 100</td>
-              <td>&lt; 50</td>
-              <td>&lt; 40</td>
-              <td>&lt; 20</td>
-              <td>0</td>
-              <td>&lt; 50</td>
-              <td>&lt; 100</td>
-              <td>H₂ elevado, demais baixos, ausência de acetileno</td>
+              <td>0 - 2587</td>
+              <td>0 - 100</td>
+              <td>0 - 7.1</td>
+              <td>0 - 43</td>
+              <td>0 - 127</td>
             </tr>
             <tr>
-              <td>Superaquecimento do Óleo</td>
-              <td>&lt; 100</td>
-              <td>50–100</td>
-              <td>40–100</td>
-              <td>&lt; 50</td>
-              <td>0</td>
-              <td>&lt; 50</td>
-              <td>&lt; 150</td>
-              <td>CH₄ e C₂H₆ elevados, sem acetileno</td>
+              <td>Superaquecimento Leve</td>
+              <td>4 - 92600</td>
+              <td>1 - 10200</td>
+              <td>0 - 96</td>
+              <td>0 - 66</td>
+              <td>0 - 745</td>
             </tr>
             <tr>
-              <td>Superaquecimento Severo</td>
-              <td>&lt; 150</td>
-              <td>&gt; 100</td>
-              <td>&gt; 100</td>
-              <td>&gt; 100</td>
-              <td>0</td>
-              <td>&lt; 70</td>
-              <td>&lt; 200</td>
-              <td>Etileno predomina com CH₄ e C₂H₆, sem acetileno</td>
+              <td>Superaquecimento Grave</td>
+              <td>35 - 40280</td>
+              <td>6 - 18342</td>
+              <td>0 - 2111</td>
+              <td>0 - 304</td>
+              <td>0 - 670</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h2 className="titulo">
+        Prevenção e Manutenção por Tipo de Falha
+      </h2>
+      <div className="tabela-wrapper">
+        <table className="tabela">
+          <thead>
+            <tr>
+              <th>Tipo de Falha</th>
+              <th>Prevenção</th>
+              <th>Manutenção</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Descarga parcial</td>
+              <td>Manter o isolamento seco e íntegro; controlar a umidade no óleo; usar materiais isolantes de qualidade; monitoramento contínuo com sensores de DP em equipamentos críticos.</td>
+              <td>Análise frequente de DGA (principalmente H₂); testes de rigidez dielétrica; inspeção interna se necessário; secagem do óleo e do isolamento; reaplicação de óleo com desgasificação.</td>
             </tr>
             <tr>
-              <td>Degradação do Papel Isolante</td>
-              <td>&lt; 100</td>
-              <td>&lt; 50</td>
-              <td>&lt; 40</td>
-              <td>&lt; 20</td>
-              <td>0</td>
-              <td>&gt; 200</td>
-              <td>&lt; 350</td>
-              <td>CO e CO₂ elevados, relacionados ao envelhecimento do papel</td>
+              <td>Superaquecimento Leve</td>
+              <td>Evitar sobrecargas; garantir boas conexões elétricas; manter o sistema de resfriamento em boas condições; executar estudos de carregamento.</td>
+              <td>Termografia regular; reaperto e limpeza de conexões; substituição de terminais desgastados; verificação da ventilação e da circulação de óleo.</td>             
             </tr>
             <tr>
-              <td>Arco Elétrico</td>
-              <td>&gt; 150</td>
-              <td>&gt; 100</td>
-              <td>&lt; 50</td>
-              <td>&gt; 100</td>
-              <td>&gt; 1</td>
-              <td>&lt; 70</td>
-              <td>&lt; 200</td>
-              <td>Acetileno presente, com picos de H₂ e C₂H₄</td>
-            </tr>
-            <tr>
-              <td>Descarga de Baixa Energia</td>
-              <td>100–200</td>
-              <td>&lt; 80</td>
-              <td>&lt; 60</td>
-              <td>&lt; 50</td>
-              <td>0.1–1</td>
-              <td>&lt; 50</td>
-              <td>&lt; 150</td>
-              <td>Acetileno presente, com picos de H₂ e C₂H₄</td>
+              <td>Superaquecimento Grave</td>
+              <td>Monitoramento contínuo de temperatura; manutenção do sistema de resfriamento; evitar sobrecargas prolongadas; instalar alarmes térmicos.</td>
+              <td>Purificação ou troca do óleo; testes físico-químicos do óleo; inspeção de enrolamentos e partes internas; reparo ou substituição de componentes danificados.</td>
             </tr>
           </tbody>
         </table>
