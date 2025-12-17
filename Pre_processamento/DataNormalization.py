@@ -8,8 +8,8 @@ def main():
     names = ['defeito','H2','CH4','C2H2','C2H4','C2H6'] 
     target = 'defeito'
     features = ['H2','CH4','C2H2','C2H4','C2H6']
-    output_file = 'Dataset_sintetico/dados_sinteticos_normalized.csv'
-    input_file = 'Dataset_sintetico/dados_sinteticos_clear.csv'
+    output_file = 'Diagnostico-de-transformadores\Datasets\GasesDissolvidos_Normalized.csv'
+    input_file = 'Diagnostico-de-transformadores\Datasets\GasesDissolvidos_Clear.csv'
     df = pd.read_csv(input_file,    # Nome do arquivo com dados
                      names = names) # Nome das colunas                      
     ShowInformationDataFrame(df,"Dataframe original")

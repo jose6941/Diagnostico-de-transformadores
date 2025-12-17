@@ -41,8 +41,8 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
     plt.xlabel('Predicted label')
 
 def main():
-    input_file = 'Datasets/GasesDissolvidos_Normalized.csv'
-    names = ['H2', 'CH4', 'C2H2', 'C2H4', 'C2H6', 'defeito']
+    input_file = 'Diagnostico-de-transformadores\Datasets\GasesDissolvidos_Normalized.csv'
+    names = ['H2', 'CH4', 'C2H2', 'C2H4', 'C2H6','defeito']
     features = ['H2', 'CH4', 'C2H2', 'C2H4', 'C2H6']
     target = 'defeito'
 

@@ -13,7 +13,7 @@ from sklearn.metrics import (
 from sklearn.preprocessing import LabelEncoder, label_binarize, StandardScaler
 
 # Carregar os dados
-input_file = 'Dataset_sintetico/dados_sinteticos_normalized.csv'
+input_file = 'Diagnostico-de-transformadores\Datasets\GasesDissolvidos_Normalized.csv'
 names = ['H2','CH4','C2H2','C2H4','C2H6','defeito']
 features = ['H2','CH4','C2H2','C2H4','C2H6']
 target = 'defeito'

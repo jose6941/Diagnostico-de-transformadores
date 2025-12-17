@@ -85,7 +85,7 @@ def plot_roc(y_test_bin, y_pred_proba, class_names, title='Curvas ROC'):
     plt.show()
 
 def main():
-    file_path = "Datasets/GasesDissolvidos_Normalized.csv"
+    file_path = "Diagnostico-de-transformadores\Datasets\GasesDissolvidos_Normalized.csv"
     data = load_data(file_path)
 
     features = ['H2', 'CH4', 'C2H2', 'C2H4', 'C2H6']

@@ -8,8 +8,8 @@ from sklearn.metrics import silhouette_score
 
 #Conjunto de dados
 
-home_data = pd.read_csv('Datasets/GasesDissolvidos_Normalized.csv', 
-                        names = ['defeito','H2','CH4','C2H2','C2H4','C2H6'])
+home_data = pd.read_csv('Diagnostico-de-transformadores\Datasets\GasesDissolvidos_Normalized.csv', 
+                        names = ['H2','CH4','C2H2','C2H4','C2H6','defeito'])
 home_data.head()
 
 #Visualização dos dados

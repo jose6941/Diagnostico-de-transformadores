@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def main():
-    input_file = 'Datasets/GasesDissolvidos.csv'
+    input_file = 'Diagnostico-de-transformadores\Datasets\GasesDissolvidos_Normalized.csv'
     names = ['H2','CH4','C2H2','C2H4','C2H6','defeito'] 
     features = ['H2','CH4','C2H2','C2H4','C2H6'] 
     target = 'defeito'

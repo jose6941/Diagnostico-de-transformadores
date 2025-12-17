@@ -50,7 +50,7 @@ def load_dataset(file_path):
 
 def main():
     # Load dataset
-    input_file = 'Datasets/GasesDissolvidos_Normalized.csv'
+    input_file = 'Diagnostico-de-transformadores\Datasets\GasesDissolvidos_Normalized.csv'
     df, features, target = load_dataset(input_file)
 
     # Separate X and y data

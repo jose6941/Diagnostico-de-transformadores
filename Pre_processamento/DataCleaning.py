@@ -3,10 +3,10 @@ import numpy as np
 
 def main():
     # Faz a leitura do arquivo
-    input_file = 'Dataset_sintetico/dados_sinteticos.csv'
+    input_file = 'Diagnostico-de-transformadores\Datasets\GasesDissolvidos.csv'
     names = ['defeito','H2','CH4','C2H2','C2H4','C2H6'] 
     features = ['defeito','H2','CH4','C2H2','C2H4','C2H6']
-    output_file = 'Dataset_sintetico/dados_sinteticos_clear.csv'
+    output_file = 'Diagnostico-de-transformadores\Datasets\GasesDissolvidos_Clear.csv'
     df = pd.read_csv(input_file,         # Nome do arquivo com dados
                      names = names,      # Nome das colunas 
                      usecols = features, # Define as colunas que serão  utilizadas
